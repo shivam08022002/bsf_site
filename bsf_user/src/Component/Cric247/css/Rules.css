@@ -1,0 +1,83 @@
+ 
+  :root {
+    --rules-bg: #f1f1f1;
+    --rules-text: #1e293b;
+    --rules-border: rgba(229, 235, 243, 0.1);
+    --rules-shadow: rgba(51, 65, 85, 0.1);
+    --rules-header-bg: #f8fafc;
+    --rules-item-bg: #000000;
+    --rules-item-hover: #e2e8f0;
+    --rules-accent: #3b82f6;
+  }
+  
+  .rules-root {
+      padding-bottom: 2%;
+      width: 100%;
+      height: 100%;
+      z-index: 2222222;
+      margin-top:0px;
+      background: var(--rules-bg);
+      color: var(--rules-text);
+  }
+  
+  .rules-toggle-button-container{
+      width: 98%;
+      text-align: center !important;
+      padding-top: 0px ;
+  }
+  
+  .rules-page-container {
+          width: 100%;
+          margin-top: 20px;
+          display: flex;
+          justify-content: center;
+      
+  }
+  
+  .rules-page-main-menu-button {
+      width: fit-content;
+      vertical-align: middle;
+      display: inline-block;
+      outline: 0;
+      appearance: none;
+      border-radius: 40px;
+      text-decoration: none;
+      cursor: pointer;
+      background-color: #3a61a2;
+      border: 1px solid var(--rules-border);
+      box-shadow: var(--rules-shadow) 4px 2px 6px;
+      color: var(--rules-header-bg);
+      margin: 10px;
+      padding: 30px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      margin-bottom: 0px;
+      font-weight: bold;
+      text-align: left;
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, 'sans-serif' ;
+      -webkit-tap-highlight-color: transparent;
+      letter-spacing: 1px;
+  }
+  
+  
+  @media (orientation: portrait) {
+      .rules-root {
+          padding: auto;
+          padding-top: 0;
+          margin: auto;
+          width: 100%;
+          height: 100%;
+          align-items: center;
+          justify-content: center;
+      }
+      .rules-page-container {
+          width: 100%;
+          margin-top: 10px;
+          display: flex;
+          justify-content: center;
+      }
+      .rules-toggle-button-container {
+          text-align: center;
+          padding-top: 0px ;
+      }
+  }

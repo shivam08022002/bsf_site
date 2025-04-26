@@ -1,0 +1,296 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f5f5f5;
+}
+
+.home-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Parent container for button groups */
+.home-button-container-parent {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  max-width: 500px;
+  padding: 20px;
+  padding-top: 0px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Individual button containers */
+.home-button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-content: center;
+}
+
+/* Button styles */
+.home-button {
+  display: flex;
+  align-items: center;
+  background-color: #3a61a2;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 40px;
+  padding: 16px 20px;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  position: relative;
+  min-height: 70px;
+  line-height: 1.5px;
+  margin-bottom: 5px;
+}
+
+.home-button:hover {
+  background-color: #2c4c87;
+  transform: translateY(-2px);
+}
+
+.home-button:active {
+  transform: translateY(0);
+}
+
+.button-icon {
+  position: absolute;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 1.5px;
+}
+
+.button-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+/* SVG image styling */
+.button-svg {
+  width: 35px !important;
+  height: 35px !important;
+  filter: brightness(0) invert(1); /* Makes the SVG white */
+}
+
+.button-label {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 16px;
+  padding-left: 24px; /* Offset to account for the icon */
+}
+
+/* Responsive adjustments */
+
+
+/* Buttons */
+.button-home-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+    border-radius: 40px;
+    text-decoration: none;
+    cursor: pointer;
+    background: linear-gradient(to right, #3a61a2, #3a61a2);
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease-in-out;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Icons inside buttons */
+.button-home-menu i {
+    margin-right: 10px;
+    font-size: 24px;
+}
+
+/* Button hover effect */
+.button-home-menu:hover {
+    background: linear-gradient(to right, #5b9bd5, #3a61a2);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Button active state */
+.button-home-menu:active {
+    transform: translateY(0px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .home-root {
+        padding: 0;
+    }
+
+    .button-icon {
+      left: 40px;
+    }
+
+    .home-button-container-parent {
+      grid-template-columns: 1fr;
+      gap: 15px;
+      padding: 10px;
+      padding-top: 0px;
+      max-width: 500px;
+    }
+    
+    .home-button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 60px;
+      margin-bottom: 10px;
+    }
+
+    .home-content {
+      padding-top: 10px;
+    }
+
+    .button-home-menu {
+        font-size: 16px;
+        height: 70px;
+    }
+
+    .button-home-menu i {
+        font-size: 22px;
+    }
+}
+
+/* Responsive adjustments for larger screens */
+@media (min-width: 1200px) {
+    .home-button-container-parent {
+        gap: 10px;
+    }
+
+    .button-home-menu {
+        font-size: 22px;
+        height: 70px;
+    }
+
+    .button-home-menu i {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 480px) {
+  .home-button {
+    min-height: 70px;
+    margin-bottom: 0px;
+    padding: 12px 15px;
+  }
+
+  .home-button-container-parent {
+    gap: 0px;
+  }
+
+  .button-icon {
+    left: 30px;
+  }
+  
+  .button-icon svg, .button-svg {
+    width: 35px !important;
+    height: 35px !important;
+  }
+  
+  .button-label {
+    font-size: 16px;
+    padding: 10px;
+    padding-left: 35px;
+    letter-spacing: 1.5px;
+    line-height: 1.5px;
+  }
+  
+  .home-button-container {
+    padding: 20px 45px;
+  }
+}
+@media (max-width: 420px) {
+  .home-button {
+    min-height: 70px;
+    margin-bottom: 0px;
+  }
+
+  .button-icon {
+    left: 30px;
+  }
+  
+  .button-icon svg, .button-svg {
+    width: 33px !important;
+    height: 33px !important;
+  }
+  
+  .button-label {
+    font-size: 16px;
+    padding: 10px;
+    padding-left: 30px;
+    letter-spacing: 1.5px;
+    line-height: 1.5px;
+  }
+  
+  .home-button-container {
+    padding: 20px 35px;
+  }
+}
+
+@media (max-width: 380px) {
+  .home-button {
+    min-height: 70px;
+    margin-bottom: 0px;
+  }
+
+  .button-icon {
+    left: 20px;
+  }
+  
+  .button-icon svg, .button-svg {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  
+  .button-label {
+    font-size: 16px;
+    padding: 10px;
+    font-weight: 500;
+    padding-left: 30px;
+    letter-spacing: 1.5px;
+    line-height: 1.5px;
+  }
+  
+  .home-button-container {
+    padding: 20px 25px;
+    
+  }
+}
+
+
+

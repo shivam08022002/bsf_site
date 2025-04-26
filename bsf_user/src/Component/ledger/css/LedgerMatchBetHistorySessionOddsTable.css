@@ -1,0 +1,222 @@
+.ledger-match-bet-history-session-odds-table-root {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(101, 141, 198, 0.6) rgba(241, 245, 249, 0.2);
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ledger-match-bet-history-session-odds-table {
+    background: #f8fafc;
+    border-collapse: collapse;
+    border: 1px solid #e2e8f0;
+    width: 100%;
+    font-family: 'Inter', 'Roboto', sans-serif;
+}
+
+.ledger-match-bet-history-session-odds-table-th-big {
+    border-bottom: 1px solid #e2e8f0;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: left;
+    width: 28%;
+    padding: 6px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #3a61a2; /* Bet history header - blue */
+    transition: background-color 0.2s ease;
+}
+
+.ledger-match-bet-history-session-odds-table-th-big:hover {
+    background-color: #3a61a2;
+}
+
+.ledger-match-bet-history-session-odds-table-td-big {
+    color: #334155;
+    font-size: 12px;
+    font-weight: 400;
+    width: 28%;
+    padding: 6px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.ledger-match-bet-history-session-odds-table-th-small {
+    border-bottom: 1px solid #e2e8f0;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: left;
+    width: 10%;
+    padding: 6px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #3a61a2; /* Bet history header - blue */
+    transition: background-color 0.2s ease;
+}
+
+.ledger-match-bet-history-session-odds-table-th-small:hover {
+    background-color: #3a61a2;
+}
+
+.ledger-match-bet-history-session-odds-table-td-small {
+    color: #334155;
+    font-size: 12px;
+    font-weight: 400;
+    width: 10%;
+    text-align: left;
+    padding: 6px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.disabled td {
+    color: #94a3b8;
+}
+
+.ledger-match-bet-history-session-odds-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.ledger-match-bet-history-session-odds-table tbody tr:hover {
+    background: #e2e8f0;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(241, 245, 249, 0.5);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.6);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.8);
+}
+
+/* Row alternating colors */
+.ledger-match-bet-history-session-odds-table tbody tr:nth-child(even) {
+    background-color: #f1f5f9;
+}
+
+.ledger-match-bet-history-session-odds-table tbody tr:nth-child(even):hover {
+    background-color: #e2e8f0;
+}
+
+/* Cell highlight effect */
+.ledger-match-bet-history-session-odds-table-td-big:hover,
+.ledger-match-bet-history-session-odds-table-td-small:hover {
+    background-color: rgba(203, 213, 225, 0.3);
+}
+
+/* Value formatting classes */
+.positive-value {
+    color: #16a34a;
+    font-weight: 500;
+}
+
+.negative-value {
+    color: #dc2626;
+    font-weight: 500;
+}
+
+.highlight-value {
+    color: #0369a1;
+    font-weight: 500;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    .ledger-match-bet-history-session-odds-table {
+        width: 650px;
+    }
+    
+    .ledger-match-bet-history-session-odds-table-th-big,
+    .ledger-match-bet-history-session-odds-table-th-small {
+        font-size: 11px;
+        padding: 5px;
+    }
+    
+    .ledger-match-bet-history-session-odds-table-td-big,
+    .ledger-match-bet-history-session-odds-table-td-small {
+        font-size: 11px;
+        padding: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .ledger-match-bet-history-session-odds-table {
+        width: 500px;
+    }
+    
+    .ledger-match-bet-history-session-odds-table-th-big,
+    .ledger-match-bet-history-session-odds-table-th-small {
+        font-size: 10px;
+        padding: 4px;
+    }
+    
+    .ledger-match-bet-history-session-odds-table-td-big,
+    .ledger-match-bet-history-session-odds-table-td-small {
+        font-size: 10px;
+        padding: 4px;
+    }
+}
+
+/* demo styles */
+
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+body {
+    background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+    background: linear-gradient(to right, #25c481, #25b7c4);
+    font-family: 'Roboto', sans-serif;
+} */
+
+/* section {
+    margin: 50px;
+} */
+
+
+/* follow me template */
+/* .made-with-love {
+    margin-top: 40px;
+    padding: 10px;
+    clear: left;
+    text-align: center;
+    font-size: 10px;
+    font-family: arial;
+    color: #fff;
+}
+
+.made-with-love i {
+    font-style: normal;
+    color: #F50057;
+    font-size: 14px;
+    position: relative;
+    top: 2px;
+}
+
+.made-with-love a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.made-with-love a:hover {
+    text-decoration: underline;
+} */
+
+@media (orientation: portrait) {
+    .ledger-match-bet-history-session-odds-table {
+        width: 600px;
+    }
+}

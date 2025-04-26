@@ -1,0 +1,188 @@
+/* LedgerMatchBetHistorySessionOdds.css - Improved styling */
+.ledger-match-bet-history-session-odds {
+    border: 1px solid #d0d7de;
+    border-radius: 4px;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    background-color: #f8fafc;
+    transition: box-shadow 0.3s ease;
+    margin: 0 0 10px 0;
+}
+
+.ledger-match-bet-history-session-odds:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ledger-match-bet-history-session-odds-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    background: #10b981; /* Session odds header - green */
+    padding: 6px;
+    color: #ffffff;
+    border: 5px solid #f1f1f1;
+    border-width: 5px;
+    transition: background-color 0.2s ease;
+    margin: 0;
+}
+
+.ledger-match-bet-history-session-odds-header:hover {
+    background: #059669;
+}
+
+.ledger-match-bet-history-session-odds-title {
+    width: 98%;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin: 0;
+    letter-spacing: 0.3px;
+    color: #ffffff;
+}
+
+.ledger-match-bet-history-session-odds-plus {
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ledger-match-bet-history-session-odds-header h3 {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.ledger-match-expand-button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.ledger-match-expand-button:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.ledger-match-bet-history-session-odds-content {
+    padding: 6px;
+    background-color: #f8fafc;
+}
+
+.ledger-match-bet-history-session-odds-yes-rate-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.ledger-match-bet-history-session-odds-content input {
+    display: block;
+    width: calc(100% - 12px);
+    margin: 4px 0 8px;
+    padding: 6px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: white;
+    color: #334155;
+}
+
+.ledger-match-bet-history-session-odds-content input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+    outline: none;
+}
+
+.ledger-match-bet-history-session-odds-content label {
+    display: block;
+    margin-bottom: 3px;
+    font-weight: 600;
+    color: #334155;
+    font-size: 0.85rem;
+}
+
+.ledger-match-bet-history-session-odds-button {
+    background-color: #10b981;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.ledger-match-bet-history-session-odds-button:hover {
+    background-color: #059669;
+    transform: translateY(-1px);
+}
+
+.ledger-match-bet-history-session-odds-button:active {
+    transform: translateY(1px);
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    .ledger-match-bet-history-session-odds {
+        width: 100%;
+        margin: 0 0 10px 0;
+    }
+    
+    .ledger-match-bet-history-session-odds-header {
+        padding: 5px;
+    }
+    
+    .ledger-match-bet-history-session-odds-title {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+    
+    .ledger-match-bet-history-session-odds-content {
+        padding: 5px;
+    }
+    
+    .ledger-match-bet-history-session-odds-button {
+        width: 100%;
+        padding: 6px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .ledger-match-bet-history-session-odds {
+        width: 100%;
+        margin: 0 0 10px 0;
+    }
+    
+    .ledger-match-bet-history-session-odds-yes-rate-container {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .ledger-match-bet-history-session-odds-content input {
+        padding: 5px;
+        font-size: 0.8rem;
+    }
+    
+    .ledger-match-bet-history-session-odds-button {
+        padding: 5px;
+        font-size: 0.8rem;
+    }
+}

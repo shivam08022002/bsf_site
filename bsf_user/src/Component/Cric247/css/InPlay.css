@@ -1,0 +1,471 @@
+.button-83 {
+    appearance: button;
+    background-color: transparent;
+    background-image: linear-gradient(to bottom, #fff, #f8eedb);
+    border: 0 solid #e5e7eb;
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #482307;
+    column-gap: 1rem;
+    cursor: pointer;
+    display: flex;
+    font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 100%;
+    font-weight: 700;
+    line-height: 24px;
+    margin: 0;
+    outline: 2px solid transparent;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    text-transform: none;
+    transition: all .1s cubic-bezier(.4, 0, .2, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    box-shadow: -6px 8px 10px rgba(81, 41, 10, 0.1), 0px 2px 2px rgba(81, 41, 10, 0.2);
+}
+
+.button-83:active {
+    background-color: #f3f4f6;
+    box-shadow: -1px 2px 5px rgba(81, 41, 10, 0.15), 0px 1px 1px rgba(81, 41, 10, 0.15);
+    transform: translateY(0.125rem);
+}
+
+.button-83:focus {
+    box-shadow: rgba(72, 35, 7, .46) 0 0 0 4px, -6px 8px 10px rgba(81, 41, 10, 0.1), 0px 2px 2px rgba(81, 41, 10, 0.2);
+}
+
+/* CSS */
+.button-13 {
+    background-color: #fff;
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    box-sizing: border-box;
+    color: #0f1111;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Amazon Ember", sans-serif;
+    font-size: 13px;
+    line-height: 29px;
+    padding: 0 10px 0 11px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: 100px;
+}
+
+.button-13:hover {
+    background-color: #f7fafa;
+}
+
+.button-13:focus {
+    border-color: #008296;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    outline: 0;
+}
+
+.inplay-sports-button-wrapper {
+    width: 96%; /* Match the width of the match cards */
+    margin-bottom: 3%;
+    display: flex;
+    justify-content: center;
+}
+
+.inplay-sports-button {
+    background-color: #fff;
+    box-sizing: border-box;
+    color: #f8f8f8;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Amazon Ember", sans-serif;
+    font-size: 20px;
+    line-height: 29px;
+    padding: 0 10px 0 11px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    border: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: 100%; /* Full width within the wrapper */
+    min-height: 60px;
+    border-radius: 10px;
+    background-color: #3a61a2;
+    /* box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
+    -webkit-tap-highlight-color: transparent;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    text-transform: uppercase;
+    font-family:'Open Sans', sans-serif;
+}
+
+.inplay-sports-button:hover {
+    background-color: #f8f8f8;
+    color: #3a61a2;
+}
+
+.inplay-sports-button:focus {
+    border: 0.5px solid #3a61a2;
+    border-color: #3a61a2;
+    box-shadow: rgba(0, 0, 0, 0.20) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.20) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    outline: none;
+    color: #3a61a2;
+    background: #f8f8f8;
+}
+
+.inplay-sports-button:active {
+    transform: scale(0.98);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    background: #e5e5e5;
+    outline: none;
+}
+
+.inplay-sports-button.active {
+    background-color: #f8f8f8;
+    color: #3a61a2;
+    border: 0.5px solid #3a61a2;
+    box-shadow: rgba(0, 0, 0, 0.20) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.20) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+
+.inplay-root {
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+}
+
+.inplay-sports-button-matches-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 480px) {
+    .inplay-sports-button-matches-card-container {
+        margin-bottom: 0px;
+        /* padding: 5px; */
+    
+    }
+    
+    .match-card-root {
+        width: 100%;
+        cursor: pointer;
+        /* height: 140px; */
+    }
+    .match-card-header-container {
+        font-size: 1em;
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+}
+
+ .match-card-root {
+    width: 100%;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    /* height: 170px; */
+}
+
+.match-card-header-container {
+    width: 100%;
+    background: #3a61a2;
+    color: #f8f8f8;
+    font-size: 1.3em;
+    font-weight: 400;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: center;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.inplay-sports-button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    gap: 10px;
+    margin-bottom: 3%;
+    
+    /* padding: 5px; */
+}
+
+.inplay-matches-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding :20px auto;
+}
+
+.inplay-match-card-container {
+    width: 100%;
+    text-align: left;
+    border-radius: 8px;
+
+    margin: 10px auto;
+}
+
+.inplay-menu-icons {
+    vertical-align: middle;
+    padding-right: 10px;
+}
+
+.match-card-body-container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.match-card-match-name-container {
+    width: 100%;
+    padding-bottom: 0px;
+}
+
+.match-card-match-name-label {
+    color: #3a61a2;
+    font-weight: 400;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.match-card-match-info-label {
+    color: black;
+    font-weight: 300;
+}
+
+.match-card-match-bets-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.match-card-match-bets-label {
+    color: grey;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 2px;
+}
+
+.match-card-status-container {
+    display: flex;
+    justify-content:space-between;
+    margin-top: 1%;
+    align-items: end;
+}
+
+.inplay-blink {
+    font-size: 14px;
+    color: green;
+    animation: blink 2s infinite;
+}
+
+.all-series-blink {
+    position: absolute;
+    top: 10%;
+    gap: 20px;
+    font-size: 16px;
+    color: green;
+    animation: blink 2s infinite;
+    padding-bottom: 5%;
+    cursor: pointer;
+}
+
+.inplay-sports-icons {
+    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 30px;
+}
+
+@keyframes blink {
+    0% {
+        color: red;
+    }
+
+    20% {
+        color: green;
+    }
+
+    40% {
+        color: yellow;
+    }
+
+    60% {
+        color: blue;
+    }
+
+    80% {
+        color: orange;
+    }
+
+    100% {
+        color: red;
+    }
+}
+
+@-webkit-keyframes blink {
+    0% {
+        background: red;
+    }
+
+    20% {
+        background: green;
+    }
+
+    40% {
+        background: yellow;
+    }
+
+    60% {
+        background: blue;
+    }
+
+    80% {
+        background: orange;
+    }
+
+    100% {
+        background: red;
+    }
+}
+
+@media (orientation: portrait) {
+    .inplay-root {
+       
+        padding: auto;
+        margin: auto;
+        width: 100%;
+
+    }
+    
+}
+@media (max-width: 1024px) {
+    .inplay-sports-button {
+        width: 100%;
+        padding: 0.2rem 0.2rem;
+        /* padding: 2px 2px; */
+    }
+}
+@media (orientation: landscape) {
+    .inplay-sports-button {
+        width: 100%;
+        padding: 0.2rem 0.2rem;
+        /* padding: 2px 2px; */
+    }
+    .inplay-root {
+        padding: auto;
+        margin: auto;
+        width: 100%;
+    }
+}
+/* Media query for mobile responsiveness */
+@media (max-width: 768px) {
+    .inplay-sports-button-wrapper {
+        width: 100%;
+        padding: 0 10px 0 11px;
+        /* padding: 2px 2px; */
+    }
+    .inplay-sports-button-container {
+        width: 100%;
+        gap: 10px;
+        padding: 0 10px 0 11px;
+
+    }
+    .inplay-sports-button {
+        font-size: 16px;
+        padding: 0.1rem 0.1rem;
+    }
+
+    .match-card-header-container {
+        font-size: 1em;
+        padding-top: 0.5%;
+        padding-bottom: 0.5%;
+    }
+
+    .match-card-body-container {
+        padding: 10px;;
+    }
+
+    .match-card-match-name-label {
+        font-size: 14px;
+    }
+
+    .match-card-match-info-label {
+        font-size: 12px;
+    }
+
+    .match-card-match-bets-label {
+        font-size: 12px;
+    }
+
+    .inplay-blink {
+        font-size: 12px;
+    }
+
+    .all-series-blink {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .inplay-sports-button-container {
+        width: 100%;
+        gap: 8px;
+    }
+
+    .inplay-sports-button {
+        font-size: 12px;
+        padding: 0.1rem 0.1rem;
+        /* margin-bottom: 5px; */
+    }
+
+    .match-card-header-container {
+        font-size: 0.9em;
+        padding-top: 2%;
+        padding-bottom: 2%;
+    }
+
+    .match-card-body-container {
+        padding: 10px;
+        gap: 0px;
+        margin: 0px;
+        /* height: 70%; */
+        /* margin-bottom: 0%; */
+
+    }
+
+    .match-card-match-name-label {
+        font-size: 12px;
+    }
+
+    .match-card-match-info-label {
+        font-size: 12px;
+    }
+
+    .match-card-match-bets-label {
+        font-size: 12px;
+    }
+   
+
+    .inplay-blink {
+        font-size: 12px;
+    }
+
+    .all-series-blink {
+        font-size: 12px;
+    }
+}

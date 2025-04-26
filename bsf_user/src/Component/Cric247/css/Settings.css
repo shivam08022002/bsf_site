@@ -1,0 +1,149 @@
+/* Container and form layout */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+    /* Ensure padding doesn't affect width */
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: nowrap;
+    /* Prevent wrapping */
+}
+
+.input-container {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+/* Input button styling with funky gradient border */
+.input-button {
+    flex: 1 1 23%;
+    /* 23% width per input field */
+    margin-right: 10px;
+    padding: 10px;
+    border: 5px solid transparent;
+    /* Transparent base for funky border */
+    border-radius: 10px;
+    background-color: #f8f8f8;
+    /* Off-white background */
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border 0.5s ease;
+    font-size: 14px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    /* Ensure the input field is above the gradient */
+}
+
+/* Gradient border effect applied directly on the input field */
+.input-button {
+    border-image: linear-gradient(45deg, #ff6ec4, #7873f5, #4fd3f3) 1;
+}
+
+.input-button:last-child {
+    margin-right: 0;
+}
+
+.input-button:hover {
+    background-color: #eaeaea;
+}
+
+/* Save button styling */
+.save-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #3a61a2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.save-button:hover {
+    border: 1px solid white;
+}
+
+/* Error message styling */
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+.saved {
+    color: green;
+    font-size: 16px;
+    margin-top: 5px;
+    display: block;
+    font-weight: bold;
+}
+
+
+/* Media Queries for Portrait Orientation */
+@media (orientation: portrait) {
+    .input-button {
+        flex: 1 1 22%;
+        /* Adjust flex-basis to fit all 4 inputs on mobile in portrait */
+        margin-right: 5px;
+        /* Reduced margin for tighter fit */
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .form-row {
+        flex-wrap: nowrap;
+        /* Prevent wrapping */
+    }
+
+    .save-button {
+        padding: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+}
+
+/* Additional for very small portrait screens (optional) */
+@media (orientation: portrait) and (max-width: 480px) {
+    .input-button {
+        flex: 1 1 24%;
+        /* Ensure 4 inputs still fit, slightly tighter spacing */
+        margin-right: 5px;
+        padding: 6px;
+        font-size: 14px;
+        min-height: 50px;
+    }
+
+    .save-button {
+        padding: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+}
+
+/* Keyframe animation for the funky gradient movement */
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

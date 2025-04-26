@@ -1,0 +1,367 @@
+/* Global Styles */
+.virtual-games-root {
+  font-family: 'Open Sans', sans-serif;
+  color: #f5f5f5;
+}
+
+/* Container */
+.virtual-games-container {
+  padding: 20px;
+  background-color: #15172b;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 2fr));
+  min-height: 100vh;
+  padding-top:15px;
+}
+
+.virtual-game-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 2fr));
+  gap: 10px;
+  padding-top: 10px;
+}
+
+/* Game Card */
+.virtual-game-card {
+  position: relative;
+  background-color: #c0984d;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 200px;
+  max-height: 300px;
+}
+
+.virtual-game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.virtual-game-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+/* Card Buttons */
+.card-buttons {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: inherit;
+  transition: opacity 0.3s ease;
+}
+
+.virtual-game-card:hover .card-buttons {
+  opacity: 1;
+}
+
+/* Responsive Design for Portrait Mode */
+@media (max-width: 768px) {
+  .virtual-games-container {
+    padding: 10px;
+    padding-top: 15px;
+   
+  }
+  
+  .virtual-game-container {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .virtual-game-card {
+    border-radius: 12px;
+    min-height: 150px;
+    max-height: 150px;
+    min-width: 150px;
+    max-width: 150px;
+   
+  }
+
+  .virtual-game-card img {
+    border-radius: inherit;
+  }
+
+  .card-buttons {
+    border-radius: inherit;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  
+.virtual-game-container {
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  /* gap: 10px; */
+}
+}
+
+/* Virtual Games  extra css*/
+
+/* root */
+.casino-root {
+  font-family: 'Open Sans', sans-serif;
+  /* background: linear-gradient(180deg, #2c003e 0%, #000000 100%); */
+  color: #f5f5f5;
+}
+
+/* Container */
+.casino-container {
+  padding: 20px;
+  /* padding-top: 0%; */
+  padding-top: 0px;
+  margin-right: 150px;
+  background-color: #15172b;
+}
+
+/* Game Type Header */
+.game-type-header {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 3px;
+  scrollbar-width: thin;
+  scrollbar-color: #c0984d #2c003e;
+}
+
+.game-type-header::-webkit-scrollbar {
+  height: 1px;
+  border-radius: 10px;
+}
+
+.game-type-header::-webkit-scrollbar-thumb {
+  background-color: #c0984d;
+  border-radius: 4px;
+}
+
+/* Game Type Button */
+.game-type-button {
+  min-width: 100px;
+  padding: 5px 5px;
+  background-color: #231628;
+  color: #c0984d;
+  border-radius: 10px;
+  border: #c0984d solid 0.5px;
+  /* cursor: pointer; */
+  font-size: 16px;
+  font-weight: 400;
+  transition: background-color 0.3s, transform 0.3s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.game-type-button:hover {
+  background-color: #3a2c3f;
+  transform: scale(1.05);
+  color: #c0984d;
+}
+
+.game-type-button.active {
+  background-color: #3a2c3f;
+  color: #c0984d;
+}
+
+/* Game Container */
+.game-containerr {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding-top: 30px;
+  margin-bottom: 0;
+}
+
+/* Game Card */
+.game-card {
+  position: relative;
+  background-color: #c0984d;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 1px;
+  padding-bottom: 0%;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  min-height: 200px;
+  max-height: 300px;
+}
+
+.game-card .game-card-pgsoft {
+  position: relative;
+  background-color: #c0984d;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 1px;
+  margin-bottom: 0;
+  padding-bottom: 0%;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  max-height: 300px;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.game-card img {
+  width: 100%;
+  height: 100%;
+  padding: 0%;
+  margin: 0%;
+  object-fit: cover;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.card-buttons {
+  height: 99.2%;
+  width: 99.3%;
+  position: absolute;
+  top: 0.3%;
+  left: 49.9%;
+  transform: translateX(-50%);
+  opacity: 0;
+  border-radius: 20px;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-card:hover .card-buttons {
+  opacity: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  /* Apply blur effect */
+}
+
+.btn {
+  width: auto;
+  background-color: transparent;
+  color: #c0984d;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  /* cursor: pointer; */
+  transition: background-color 0.3s;
+  border: grey solid 2px;
+  margin: auto;
+  margin-top: 5px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:hover,
+.btn.active {
+  background-color: transparent;
+  transform: scale(1.05);
+  border: #c0984d solid 2px;
+  /* Darken button color on hover */
+}
+
+.btn-grad {
+  background-image: linear-gradient(to right, #cc972b 0%, #D7DDE8 81%, #c0984d 100%)
+}
+
+.btn-grad {
+  width: 40%;
+  padding: 10px 15px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: #231628;
+  box-shadow: 0 0 0px #eee;
+  border-radius: 2px;
+  margin: auto;
+  margin-bottom: 0px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-grad:hover {
+  transform: scale(1.05);
+  color: #231628;
+  text-decoration: none;
+}
+
+.card-buttons h3 {
+  margin-top: 16px;
+  font-size: 1.2rem;
+  color: #daa520;
+}
+
+.card-buttons p {
+  font-size: 1rem;
+  color: #cccccc;
+  margin-top: 8px;
+}
+
+@media (orientation: portrait) {
+
+  /* Container */
+  .casino-container {
+      margin: 0;
+      padding: 10px;
+      padding-top: 0px;
+      background-color: #15172b;
+  }
+
+  /* Game Type Header */
+  .game-type-header {
+      padding: 0px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+  }
+
+  .game-type-button:hover {
+      transform: scale(1);
+  }
+
+  /* Game Container */
+  .game-containerr {
+      display: grid;
+      margin: 0%;
+      grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+      gap: 10px;
+      padding-top: 10px;
+  }
+
+  .game-card {
+      border-radius: 8px;
+      padding: 0.8px;
+      margin: 0;
+      min-height: 165px;
+      max-height: 180px;
+  }
+
+  .game-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+  }
+
+  .card-buttons {
+      border-radius: 8px;
+      padding: 0;
+      margin: 0;
+  }
+
+  .btn-grad {
+      background-image: linear-gradient(to right, #cc972b 0%, #D7DDE8 100%, #c0984d 100%);
+      padding: 5px 5px;
+      font-weight: normal;
+  }
+
+  .btn {
+      padding: 5px 5px;
+      font-weight: normal;
+  }
+}
+

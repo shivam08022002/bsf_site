@@ -1,0 +1,124 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #3a61a2;
+  color: white;
+  padding: 8px 16px;
+  height: 70px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.header-left-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.app-logo {
+  height: 45px;
+  cursor: pointer;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  margin: 0;
+}
+
+.header-logo h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.header-user-info {
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header-user-info .id{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.user-info-coins {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.5;
+}
+
+.user-info-item {
+  display: flex;
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+.info-label {
+  margin-right: 5px;
+  font-weight: 600;
+}
+
+.info-value {
+  font-weight: 400;
+}
+
+.exposure {
+  font-weight: 500;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.logout-button, .menu-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-button svg, .menu-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 600px) {
+  .header {
+    padding: 8px 10px;
+    height: 58px;
+  }
+  
+  .app-logo {
+    height: 45px;
+    margin: 0;
+  }
+  
+  .header-logo h1 {
+    font-size: 20px;
+
+  }
+  
+  .user-info-item {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .logout-button svg, .menu-button svg {
+    width: 25px;
+    height: 25px;
+    font-weight: bold;
+  }
+} 

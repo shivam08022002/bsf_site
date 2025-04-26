@@ -1,0 +1,215 @@
+/* Root Background */
+.nice247-login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #2c3e50, #1c2833);
+    font-family: "Poppins", sans-serif;
+}
+
+/* Overlay Effect */
+.nice247-login-overlay {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Login Box */
+.nice247-login-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 400px;
+    padding: 35px;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nice247-login-box:hover {
+    transform: scale(1.02);
+}
+
+/* Title */
+.nice247-login-title {
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: 800;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Input Fields */
+.nice247-login-input,
+.nice247-login-captcha-input,
+.captcha-input {
+    width: 85%;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 12px;
+    margin: 12px auto;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.nice247-login-input::placeholder,
+.nice247-login-captcha-input::placeholder,
+.captcha-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.nice247-login-input:focus,
+.nice247-login-captcha-input:focus,
+.captcha-input:focus {
+    border: 2px solid #00bcd4;
+    box-shadow: 0 0 12px rgba(0, 188, 212, 0.8);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Captcha Container */
+.nice247-login-captcha-container,
+.captcha-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.nice247-login-captcha {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    image-rendering: crisp-edges;
+    border-radius: 8px;
+}
+
+/* Error Message */
+.nice247-login-error,
+.error-message {
+    color: #ff6b6b;
+    margin: 5px 0;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Login Button */
+.nice247-login-button {
+    width: 75%;
+    height: 50px;
+    padding: 14px;
+    text-align: center;
+    cursor: pointer;
+    background: linear-gradient(135deg, #00bcd4, #008cba);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 25px auto;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 2px rgba(0, 188, 212, 0.5);
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Button Hover Effect */
+.nice247-login-button:hover {
+    background: linear-gradient(135deg, #008cba, #00bcd4);
+    box-shadow: 0 10px 25px rgba(0, 188, 212, 0.6);
+    transform: translateY(-3px);
+}
+
+/* Help Text */
+.nice247-login-help {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.nice247-login-help strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .nice247-login-box {
+        width: 85%;
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .nice247-login-title {
+        font-size: 24px;
+        margin-bottom: 18px;
+    }
+
+    .nice247-login-input,
+    .nice247-login-captcha-input,
+    .captcha-input {
+        width: 100%;
+        height: 42px;
+        font-size: 15px;
+        padding: 10px;
+        margin: 8px 0;
+    }
+
+    .nice247-login-button {
+        width: 85%;
+        height: 44px;
+        font-size: 16px;
+        padding: 10px;
+    }
+    
+    .captcha-container {
+        margin: 15px 0;
+    }
+    
+    .error-message {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nice247-login-box {
+        padding: 18px 15px;
+    }
+    
+    .nice247-login-title {
+        font-size: 22px;
+    }
+    
+    .nice247-login-input,
+    .nice247-login-captcha-input,
+    .captcha-input {
+        height: 40px;
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+    
+    .nice247-login-button {
+        height: 42px;
+        font-size: 15px;
+        padding: 8px;
+        margin: 18px auto;
+    }
+}

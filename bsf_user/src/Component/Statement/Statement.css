@@ -1,0 +1,131 @@
+.statement-container {
+  padding: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.statement-title {
+  color: #3a61a2;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.statement-loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  color: #666;
+}
+
+.statement-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.summary-item {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.summary-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.summary-value {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+.statement-table-container {
+  overflow-x: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.statement-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.statement-table th {
+  background-color: #3a61a2;
+  color: white;
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.statement-table tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.statement-table tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+.statement-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.statement-table td {
+  padding: 12px 15px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.completed {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.rejected {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .statement-table th,
+  .statement-table td {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+  
+  .summary-item {
+    min-width: 100%;
+  }
+} 
