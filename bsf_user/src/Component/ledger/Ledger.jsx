@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { httpHelpers } from "../../services/httpHelpers";
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import LedgerTable from "./ledgertables/LedgerTable";
 import './css/Ledger.css';
 import LedgerDetails from "./LedgerDetails";
 
-export default function Ledger({ role, logout, userId }) {
+export default function Ledger({logout}) {
 
     let getStatement = "gamma/getUserLedger?&offset=0&limit=100";
     const clientLedger = ["DATE", "ENTRY", "DEBIT", "CREDIT", "BAL..."];

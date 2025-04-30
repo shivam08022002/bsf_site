@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SliderBanner from './SliderBanner';
+import HomeModal from './HomeModal';
 import './css/Home.css';
 // Import SVG assets
 import cricketSvg from '../../assets/cricket-svgrepo-com.svg';
@@ -95,6 +96,7 @@ const Home = () => {
       path: '/tournament',
       iconSrc: trophySvg
     },
+
    
   ];
 
@@ -102,16 +104,18 @@ const Home = () => {
     navigate(path);
   };
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   // Dividing buttons into two groups
   const firstGroup = buttons.slice(0, 5);
   const secondGroup = buttons.slice(5);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
     <div className="home-container">
+      <HomeModal />
       <div className="home-content">
         <div className="home-button-container-parent">
           <div className="home-button-container">

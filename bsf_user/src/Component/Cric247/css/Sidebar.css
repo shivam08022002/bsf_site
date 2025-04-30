@@ -74,6 +74,8 @@
   .sidebar-user-info {
     padding: 15px 20px;
     margin-bottom: 5px;
+    gap: 0;
+    line-height: normal;
   }
   
   .sidebar-user-name {
@@ -138,15 +140,15 @@
     }
     
     .sidebar-user-info {
-      padding: 10px 15px;
+      padding: 12px 15px;
     }
     
     .sidebar-user-name {
-      font-size: 14px;
+      font-size: 16px;
     }
     
     .sidebar-user-balance {
-      font-size: 14px;
+      font-size: 16px;
     }
     
     .menu-item {

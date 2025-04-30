@@ -9,13 +9,12 @@ body {
 
 .app-container {
   position: relative;
-  overflow-x: hidden;
   min-height: 100vh;
   transition: transform 0.3s ease;
 }
 
 .app-container.sidebar-open {
-  transform: translateX(250px);
+  transform: translateX(300px);
 }
 
 a {

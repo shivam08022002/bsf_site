@@ -21,6 +21,14 @@ const Header = ({ user, toggleSidebar, onLogout }) => {
     }
   };
 
+  const navigateToHome = () => {
+    navigate('/home');
+  };
+
+  const navigateToLiveMatch = () => {
+    navigate('/inplay');
+  };
+
   const fetchBalance = () => {
     api
       .get(`${"gamma/getBalance"}`)
@@ -114,26 +122,41 @@ const Header = ({ user, toggleSidebar, onLogout }) => {
             <span className="info-value">{user && user.userId || 'Guest'}&nbsp;{user && user.firstName ? `(${user.firstName})` : ''}</span>
           </div>
           <div className="user-info-coins">
-          <div className="user-info-item">
-            <span className="info-label">Coins:</span>
-            <span className="info-value">{balance}</span>
-          </div>
-          <div className="user-info-item">
-            <span className="info-label">Exp:</span>
-            <span className="info-value exposure" style={{ color: exposure >= 0 ? 'lightgreen' : 'red' }}>
-              {exposure < 0 ? `(${Math.abs(exposure)})` : exposure}
-            </span>
-          </div>
+            <div className="user-info-item">
+              <span className="info-label">Coins:</span>
+              <span className="info-value">{balance}</span>
+            </div>
+            <div className="user-info-item">
+              <span className="info-label">Exp:</span>
+              <span className="info-value exposure" style={{ color: exposure >= 0 ? 'lightgreen' : 'red' }}>
+                {exposure < 0 ? `(${Math.abs(exposure)})` : exposure}
+              </span>
+            </div>
           </div>
         </div>
       </div>
       <div className="header-actions">
-        <button className="logout-button" onClick={handleLogout}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <button className="nav-button home" onClick={navigateToHome}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <span>HOME</span>
+        </button>
+        <button className="nav-button live-match-button" onClick={navigateToLiveMatch}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="10 8 16 12 10 16 10 8"></polygon>
+          </svg>
+          <span>LIVE MATCH</span>
+        </button>
+        <button className="nav-button logout-button" onClick={handleLogout}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
             <polyline points="16 17 21 12 16 7"></polyline>
             <line x1="21" y1="12" x2="9" y2="12"></line>
           </svg>
+          <span>LOGOUT</span>
         </button>
         <button className="menu-button" onClick={toggleSidebar}>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

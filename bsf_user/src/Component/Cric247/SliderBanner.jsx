@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './css/SliderBanner.css';
 import Banner1 from '../../assets/banner/Banner1.png';
 import Banner2 from '../../assets/banner/Banner2.png';
@@ -14,30 +14,35 @@ const SliderBanner = () => {
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [prevSlide, setPrevSlide] = useState(bannerImages.length - 1);
-  const sliderIntervalRef = useRef(null);
+  const timerRef = useRef(null);
   const isPausedRef = useRef(false);
   
-  const startAutoSlide = () => {
-    if (sliderIntervalRef.current) {
-      clearInterval(sliderIntervalRef.current);
+  // Define goToNextSlide as a useCallback to avoid recreation on each render
+  const goToNextSlide = useCallback(() => {
+    setPrevSlide(currentSlide);
+    setCurrentSlide((prev) => (prev === bannerImages.length - 1 ? 0 : prev + 1));
+  }, [currentSlide, bannerImages.length]);
+  
+  // Reset the timer whenever the dependencies change
+  useEffect(() => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
     }
     
-    sliderIntervalRef.current = setInterval(() => {
+    timerRef.current = setInterval(() => {
       if (!isPausedRef.current) {
         goToNextSlide();
       }
-    }, 2000); // Change slide every 2 seconds
-  };
-  
-  useEffect(() => {
-    startAutoSlide();
+    }, 2000);
     
+    // Clear interval on unmount
     return () => {
-      if (sliderIntervalRef.current) {
-        clearInterval(sliderIntervalRef.current);
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
       }
     };
-  }, []);
+  }, [goToNextSlide]);
   
   // Manual navigation
   const goToSlide = (index) => {
@@ -45,18 +50,10 @@ const SliderBanner = () => {
     
     setPrevSlide(currentSlide);
     setCurrentSlide(index);
-    startAutoSlide(); // Reset timer after manual navigation
   };
   
   const goToPrevSlide = () => {
     const newIndex = currentSlide === 0 ? bannerImages.length - 1 : currentSlide - 1;
-    setPrevSlide(currentSlide);
-    setCurrentSlide(newIndex);
-    startAutoSlide(); // Reset timer after manual navigation
-  };
-  
-  const goToNextSlide = () => {
-    const newIndex = currentSlide === bannerImages.length - 1 ? 0 : currentSlide + 1;
     setPrevSlide(currentSlide);
     setCurrentSlide(newIndex);
   };
@@ -69,6 +66,15 @@ const SliderBanner = () => {
     isPausedRef.current = false;
   };
 
+  // Force the component to re-render every 2 seconds
+  useEffect(() => {
+    const forceUpdateInterval = setInterval(() => {
+      // This empty function just forces a re-render
+    }, 2000);
+    
+    return () => clearInterval(forceUpdateInterval);
+  }, []);
+
   return (
     <div 
       className="slider-banner" 
@@ -80,19 +86,20 @@ const SliderBanner = () => {
           <div 
             key={index} 
             className={`slide ${index === currentSlide ? 'active' : ''} ${index === prevSlide ? 'prev' : ''}`}
+            data-testid={`slide-${index}`}
           >
             <img src={image} alt={`Banner ${index + 1}`} />
           </div>
         ))}
       </div>
       
-      <button className="slider-arrow prev" onClick={goToPrevSlide}>
+      <button className="slider-arrow prev" onClick={goToPrevSlide} aria-label="Previous slide">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M15 18l-6-6 6-6" />
         </svg>
       </button>
       
-      <button className="slider-arrow next" onClick={goToNextSlide}>
+      <button className="slider-arrow next" onClick={goToNextSlide} aria-label="Next slide">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M9 18l6-6-6-6" />
         </svg>
@@ -104,6 +111,7 @@ const SliderBanner = () => {
             key={index} 
             className={`dot ${index === currentSlide ? 'active' : ''}`} 
             onClick={() => goToSlide(index)}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>

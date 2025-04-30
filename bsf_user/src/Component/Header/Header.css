@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
   background-color: #3a61a2;
   color: white;
   padding: 8px 16px;
@@ -13,16 +12,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 0px;
 }
 
 .header-logo {
   display: flex;
   align-items: center;
+  font-size: large;
+  padding: 10px;
 }
 
 .app-logo {
-  height: 45px;
+  height: 55px;
   cursor: pointer;
   vertical-align: middle;
   -webkit-tap-highlight-color: transparent;
@@ -31,7 +32,7 @@
 
 .header-logo h1 {
   margin: 0;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
 }
 
@@ -43,20 +44,19 @@
 }
 
 .header-user-info .id{
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
 }
 
 .user-info-coins {
   display: flex;
   flex-direction: column;
-  line-height: 0.5;
 }
 
 .user-info-item {
   display: flex;
-  font-size: 14px;
-  line-height: 1.1;
+  font-size: 16px;
+  line-height: 1.3;
 }
 
 .info-label {
@@ -77,6 +77,36 @@
   align-items: center;
 }
 
+.nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 10px 15px;
+  margin-left: 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.nav-button span {
+  margin-left: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+.nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.home-button, .live-match-button, .logout-button {
+  height: 38px;
+}
+
+
 .logout-button, .menu-button {
   background: none;
   border: none;
@@ -89,9 +119,49 @@
   justify-content: center;
 }
 
-.logout-button svg, .menu-button svg {
-  width: 20px;
-  height: 20px;
+.menu-button {
+  margin-left: 15px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.menu-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.logout-button svg, .menu-button svg, .nav-button svg {
+  width: 22px;
+  height: 22px;
+}
+
+
+
+/* Hide text on mobile */
+@media (max-width: 900px) {
+  .header{
+    height: 65px;
+  }
+  .nav-button span {
+    display: none;
+  }
+  
+  .user-info-item {
+    display: flex;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+  .nav-button {
+    padding: 8px;
+  }
+
+  .header-logo{
+    padding:10px;
+  }
+
+  .home, .live-match-button {
+    height: auto;
+    display:none;
+  }
 }
 
 /* Mobile responsive adjustments */
@@ -103,14 +173,17 @@
   
   .app-logo {
     height: 45px;
-    margin: 0;
+    margin-right: 10px;
   }
   
   .header-logo h1 {
     font-size: 20px;
-
   }
-  
+  .header-logo{
+    margin-right: 10px;
+    padding: 0;
+  }
+
   .user-info-item {
     font-size: 14px;
     line-height: 17px;

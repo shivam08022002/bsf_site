@@ -35,8 +35,8 @@ const Sidebar = ({ isOpen, toggleSidebar, handleLogout, user }) => {
     { label: 'STATEMENT', path: '/statement' },
     { label: 'PROFIT LOSS', path: '/profitloss' },
     { label: 'BET HISTORY', path: '/bethistory' },
+    { label: 'LOGIN HISTORY', path: '/loginhistory' },
     { label: 'PASSWORD HISTORY', path: '/passwordhistory' },
-    { label: 'COIN HISTORY', path: '/coinhistory' },
     { label: 'PASSWORD', path: '/changepassword' },
     { label: ' CASINO GAMES', path: '/casino' },
     { label: 'SETTINGS', path: '/settings' },
@@ -84,6 +84,8 @@ const Sidebar = ({ isOpen, toggleSidebar, handleLogout, user }) => {
 
   const handleNavigation = (item) => {
     if (item.isLogout) {
+      // Clear the home modal flag when logging out
+      localStorage.removeItem('homeModalShown');
       if (handleLogout) handleLogout();
     } else {
       navigate(item.path);
@@ -98,7 +100,7 @@ const Sidebar = ({ isOpen, toggleSidebar, handleLogout, user }) => {
         {user && (
           <div className="sidebar-user-info">
             <div className="sidebar-user-name">
-            <label>User: </label>
+            {/* <label>User: </label> */}
               <span>{user.userId || user.userName} ({user.firstName || ''})</span>
             </div>
             <div className="sidebar-user-balance">

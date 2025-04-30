@@ -1,100 +1,130 @@
-import './css/InPlay.css';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+import './css/Tournament.css';
 import {
     CRICKET,
     FOOTBALL,
     TENNIS
 } from '../../common/constants';
-import MatchesCardView from './MatchesCardView';
-import { useState, useEffect, useRef } from "react";
+import TournamentCardView from './TournamentCardView';
 import { httpHelpers } from "../../services/httpHelpers";
-import { useNavigate } from 'react-router-dom';
-import SeriesCardView from './SeriesCardView';
 import { MdSportsCricket, MdSportsSoccer, MdSportsTennis } from 'react-icons/md';
 
-export default function Tournament({ logout, isSmallScreen }) {
+const Tournament = ({ logout }) => {
     const [selectedSport, setSelectedSport] = useState(CRICKET);
-    const cricketButtonRef = useRef(null);
-    const tennisButtonRef = useRef(null);
-    const footballButtonRef = useRef(null);
-    let navigate = useNavigate();
-    const getAllSeries = "/gamma/getAllSeries?sportType=";
+    const [isLoading, setIsLoading] = useState(false);
     const [allSeries, setAllSeries] = useState(null);
+    
+    const navigate = useNavigate();
     const api = httpHelpers();
 
-    const handleSeriesClick = (e, seriesId) => {
-        e.preventDefault();
+    const sportTabs = [
+        { id: CRICKET, label: 'Cricket', icon: <MdSportsCricket /> },
+        { id: FOOTBALL, label: 'Football', icon: <MdSportsSoccer /> },
+        { id: TENNIS, label: 'Tennis', icon: <MdSportsTennis /> }
+    ];
+
+    const handleSeriesClick = (seriesId) => {
+        navigate("/seriesmatches", { state: { seriesId } });
+    };
+    
+    const handleViewMoreClick = (seriesId) => {
         navigate("/seriesmatches", { state: { seriesId } });
     };
 
-    const handleSportClick = (e, sport, buttonRef) => {
-        e.preventDefault();
-        setSelectedSport(sport);
-        buttonRef.current.focus();
-    };
-
     const fetchAllSeries = async () => {
-        api
-            .get(`${getAllSeries}` + selectedSport)
-            .then(res => {
-                if (res && res.data && res.data.length > 0) {
-                    setAllSeries(res.data);
-                } else {
-                    setAllSeries(null);
-                }
-            })
-            .catch(err => {
-                if (err) {
-                    if (err.data) {
-                        if (err.data.status && err.data.status === 401) {
-                            logout();
-                        }
-                    } else if (err.response) {
-                        if (err.response.status && err.response.status === 401) {
-                            logout();
-                        }
-                    }
-                }
-            });
+        setIsLoading(true);
+        try {
+            const response = await api.get(`gamma/getAllSeries?sportType=${selectedSport}`);
+            if (response && response.data && response.data.length > 0) {
+                // Log the first series object to see its structure
+                console.log("Series data example:", response.data[0]);
+                
+                // Ensure every series has a sportType property
+                const seriesWithSportType = response.data.map(series => ({
+                    ...series,
+                    sportType: series.sportType || selectedSport
+                }));
+                
+                setAllSeries(seriesWithSportType);
+            } else {
+                setAllSeries(null);
+            }
+        } catch (err) {
+            console.error("Error fetching series data:", err);
+            if (err?.data?.status === 401 || err?.response?.status === 401) {
+                logout();
+            }
+            setAllSeries(null);
+        } finally {
+            setIsLoading(false);
+        }
     };
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+      
     useEffect(() => {
         window.scrollTo(0, 0);
         fetchAllSeries();
-        if (selectedSport === CRICKET)
-            cricketButtonRef.current.focus();
     }, [selectedSport]);
 
     return (
-        <div className="inplay-root">
-            <div className="inplay-sports-button-matches-card-container">
-                <div className="inplay-sports-button-container">
-                    <button ref={cricketButtonRef} className="inplay-sports-button" onClick={(e) => handleSportClick(e, CRICKET, cricketButtonRef)} role="button">
-                        <i className="inplay-sports-icons"><MdSportsCricket style={{ paddingTop: isSmallScreen ? "7px" : "0px" }} /></i>
-                        Cricket
+        <div className="tournament-container">
+            
+            <div className="sport-tabs">
+                {sportTabs.map((sport) => (
+                    <button
+                        key={sport.id}
+                        className={`sport-tab ${selectedSport === sport.id ? 'active' : ''}`}
+                        onClick={() => setSelectedSport(sport.id)}
+                    >
+                        <span className="sport-icon">{sport.icon}</span>
+                        <span className="sport-label">{sport.label}</span>
                     </button>
-                    <button ref={footballButtonRef} className="inplay-sports-button" onClick={(e) => handleSportClick(e, FOOTBALL, footballButtonRef)} role="button">
-                        <i className="inplay-sports-icons"><MdSportsSoccer style={{ paddingTop: isSmallScreen ? "7px" : "0px" }} /></i>
-                        Football
-                    </button>
-                    <button ref={tennisButtonRef} className="inplay-sports-button" onClick={(e) => handleSportClick(e, TENNIS, tennisButtonRef)} role="button">
-                        <i className="inplay-sports-icons"><MdSportsTennis style={{ paddingTop: isSmallScreen ? "7px" : "0px" }} /></i>
-                        Tennis
-                    </button>
-                </div>
-                <div className="inplay-matches-card-container">
-                    {allSeries && allSeries.length > 0 ? (
-                        allSeries.map((series, index) => (
-                            <div key={index} className="inplay-match-card-container" onClick={(e) => handleSeriesClick(e, series.id)}>
-                                <SeriesCardView id={series.id} series={series} />
-                            </div>
-                        ))
-                    ) : (
-                        <div className="no-matches-message">
-                            <p>No {selectedSport.toUpperCase()} Series Available!</p>
+                ))}
+            </div>
+            
+            <div className="series-grid">
+                {isLoading ? (
+                    <div className="loading-container">
+                        <div className="loading-spinner"></div>
+                        <p>Loading tournaments...</p>
+                    </div>
+                ) : allSeries && allSeries.length > 0 ? (
+                    allSeries.map((series) => (
+                        <div 
+                            key={series.id} 
+                            className="series-item"
+                            onClick={() => handleSeriesClick(series.id)}
+                        >
+                            <TournamentCardView 
+                                series={series} 
+                                match={{
+                                    id: series.id,
+                                    name: series.name,
+                                    oddsBetCount: series.matchCount || 0,
+                                    sessionBetCount: series.sessionCount || 0,
+                                    matchStatus: series.status || 'Tournament'
+                                }}
+                                onViewMoreClick={handleViewMoreClick}
+                            />
                         </div>
-                    )}
-                </div>
+                    ))
+                ) : (
+                    <div className="no-series-message">
+                        <div className="empty-state-icon">
+                            {selectedSport === CRICKET ? <MdSportsCricket size={48} /> :
+                             selectedSport === FOOTBALL ? <MdSportsSoccer size={48} /> :
+                             <MdSportsTennis size={48} />}
+                        </div>
+                        <h3>No {selectedSport.charAt(0).toUpperCase() + selectedSport.slice(1)} Tournaments Available</h3>
+                        <p>Check back later for upcoming tournaments</p>
+                    </div>
+                )}
             </div>
         </div>
     );
 };
+
+export default Tournament;

@@ -6,7 +6,7 @@ import { savePreBetPreferencesOnServer } from "../../actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { clearMessage } from "../../actions/message";
 
-export default function Settings({ role, isLoggedIn, logout }) {
+export default function Settings({isLoggedIn, logout }) {
 
     useEffect(() => {
         dispatch(clearMessage());
@@ -120,6 +120,10 @@ export default function Settings({ role, isLoggedIn, logout }) {
             savePreBetPreferences();
         }
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
 
     const savePreBetPreferences = () => {
         console.log("savePreBetPreferences", formData);

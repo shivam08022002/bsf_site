@@ -8,40 +8,97 @@
 .virtual-games-container {
   padding: 20px;
   background-color: #15172b;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 2fr));
   min-height: 100vh;
-  padding-top:15px;
+  padding-top: 15px;
+}
+
+/* Header Styling */
+.virtual-games-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: linear-gradient(135deg, #1a237e, #283593);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.virtual-games-header h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.virtual-games-header p {
+  margin-top: 8px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .virtual-game-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 2fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
   padding-top: 10px;
 }
 
 /* Game Card */
 .virtual-game-card {
   position: relative;
-  background-color: #c0984d;
+  background-color: #3a3a3a;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  min-height: 200px;
-  max-height: 300px;
+  height: 320px;
 }
 
 .virtual-game-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
 }
 
-.virtual-game-card img {
+.game-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.game-image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: inherit;
+  transition: transform 0.5s ease;
+}
+
+.virtual-game-card:hover .game-image-container img {
+  transform: scale(1.1);
+}
+
+.game-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  padding: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.game-overlay h3 {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.game-overlay p {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* Card Buttons */
@@ -53,9 +110,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 15px;
   opacity: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
   border-radius: inherit;
   transition: opacity 0.3s ease;
 }
@@ -64,46 +122,94 @@
   opacity: 1;
 }
 
-/* Responsive Design for Portrait Mode */
+.btn-play, .btn-info {
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  min-width: 160px;
+}
+
+.btn-play {
+  background: linear-gradient(135deg, #4CAF50, #2E7D32);
+  color: white;
+}
+
+.btn-play:hover {
+  background: linear-gradient(135deg, #2E7D32, #1B5E20);
+  transform: scale(1.05);
+}
+
+.btn-info {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-info:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .virtual-games-container {
-    padding: 10px;
-    padding-top: 15px;
-   
+    padding: 15px;
+  }
+  
+  .virtual-games-header {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .virtual-games-header h1 {
+    font-size: 24px;
+  }
+  
+  .virtual-games-header p {
+    font-size: 14px;
   }
   
   .virtual-game-container {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
   }
-
-  .virtual-game-card {
-    border-radius: 12px;
-    min-height: 150px;
-    max-height: 150px;
-    min-width: 150px;
-    max-width: 150px;
-   
-  }
-
-  .virtual-game-card img {
-    border-radius: inherit;
-  }
-
-  .card-buttons {
-    border-radius: inherit;
-  }
-}
-
-@media screen and (min-width: 480px) {
   
-.virtual-game-container {
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  /* gap: 10px; */
+  .virtual-game-card {
+    height: 280px;
+  }
+  
+  .game-overlay h3 {
+    font-size: 20px;
+  }
+  
+  .btn-play, .btn-info {
+    padding: 10px 24px;
+    min-width: 140px;
+    font-size: 14px;
+  }
 }
+
+@media (max-width: 480px) {
+  .virtual-game-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .virtual-game-card {
+    height: 240px;
+  }
+  
+  .btn-play, .btn-info {
+    min-width: 120px;
+    padding: 8px 20px;
+  }
 }
 
 /* Virtual Games  extra css*/

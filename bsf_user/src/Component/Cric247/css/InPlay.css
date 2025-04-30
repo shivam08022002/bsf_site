@@ -168,7 +168,7 @@
     }
 }
 
- .match-card-root {
+.match-card-root {
     width: 100%;
     cursor: pointer;
     padding-left: 10px;
@@ -467,5 +467,30 @@
 
     .all-series-blink {
         font-size: 12px;
+    }
+}
+
+/* Tournament specific styles */
+.tournament-header-btn {
+    display: none;
+}
+
+@media (min-width: 900px) {
+    .tournament-header-btn {
+        display: inline-block;
+        /* float: right; */
+        margin-right: 15px;
+        background: transparent;
+        color: #f8f8f8;
+        border: 1px solid #f8f8f8;
+        border-radius: 5px;
+        padding: 2px 8px;
+        cursor: pointer;
+        font-size: 0.8em;
+    }
+    
+    .tournament-header-btn:hover {
+        background: #f8f8f8;
+        color: #3a61a2;
     }
 }

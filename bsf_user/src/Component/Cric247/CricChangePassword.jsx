@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import TokenService from "../../services/token-service";
 import { changePassword, changePasswordProfile } from "../../actions/auth";
 import { clearMessage } from "../../actions/message";
@@ -15,33 +15,36 @@ const CricChangePassword = ({ role, logout }) => {
     newPassword: "",
     confirmNewPassword: "",
   });
+  const [successMessage, setSuccessMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  
   let navigate = useNavigate();
-
-
-  const { message } = useSelector((state) => state.message);
   const dispatch = useDispatch();
 
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(clearMessage());
-  }, []);
+  }, [dispatch]);
 
   const onChangeOldPassword = (e) => {
     const password = e.target.value;
     setOldPassword(password);
     setError((prev) => ({ ...prev, oldPassword: "" }));
+    setSuccessMessage("");
   };
 
   const onChangePassword = (e) => {
     const password = e.target.value;
     setNewPassword(password);
     setError((prev) => ({ ...prev, newPassword: "" }));
+    setSuccessMessage("");
   };
 
   const onChangeConfirmPassword = (e) => {
     const password = e.target.value;
     setConfirmNewPassword(password);
     setError((prev) => ({ ...prev, confirmNewPassword: "" }));
+    setSuccessMessage("");
   };
 
   const validateInput = () => {
@@ -70,53 +73,73 @@ const CricChangePassword = ({ role, logout }) => {
 
   const handleChangePassword = (e) => {
     e.preventDefault();
+    setSuccessMessage("");
+    setLoading(true);
+    
     const user = TokenService.getUser(role);
     if (validateInput()) {
       if (user && user.accountStatus === "ACTIVE") {
         dispatch(changePasswordProfile(oldPassword, newPassword, role))
           .then((data) => {
+            setLoading(false);
             console.log("cp profile data:", data);
             if (data.status === 401) {
               if (data.data === "Wrong password") {
-                alert("wrong password");
+                setError((prev) => ({ ...prev, oldPassword: "Incorrect old password" }));
               } else {
                 logout();
               }
             } else {
               if (data.status === 200) {
-                alert("Password Changed Successfully!");
+                setSuccessMessage("Password Changed Successfully!");
+                // Clear fields
+                setOldPassword("");
+                setNewPassword("");
+                setConfirmNewPassword("");
               } else {
-                alert(data);
+                setError((prev) => ({ ...prev, oldPassword: data || "An error occurred" }));
               }
             }
           })
           .catch(() => {
+            setLoading(false);
+            setError((prev) => ({ ...prev, oldPassword: "An error occurred. Please try again." }));
           });
       } else {
         const userId = user.userId;
         dispatch(changePassword(oldPassword, newPassword, userId, role))
           .then((data) => {
+            setLoading(false);
             console.log("cp data:", data);
             if (data.status === 401) {
               if (data.data === "Wrong password") {
-                alert("wrong password");
+                setError((prev) => ({ ...prev, oldPassword: "Incorrect old password" }));
               } else {
                 logout();
               }
             } else {
               if (data.status === 200) {
-                navigate("/home");
+                setSuccessMessage("Password Changed Successfully!");
+                // Navigate after a short delay
+                setTimeout(() => navigate("/home"), 1500);
               } else {
-                alert(data);
+                setError((prev) => ({ ...prev, oldPassword: data || "An error occurred" }));
               }
             }
           })
           .catch(() => {
-
+            setLoading(false);
+            setError((prev) => ({ ...prev, oldPassword: "An error occurred. Please try again." }));
           });
       }
+    } else {
+      setLoading(false);
     }
   };
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="reset-password-root">
@@ -125,40 +148,52 @@ const CricChangePassword = ({ role, logout }) => {
           <label className="reset-password-header">Change Password</label>
         </div>
         <div className="reset-password-body-container">
-          <input
-            placeholder="OLD PASSWORD"
-            // label="Old Password"
-            // variant="standard"
-            // margin="normal"
-            type="password"
-            className="reset-password-input"
-            onChange={(e) => onChangeOldPassword(e)}
-            error={!!error.oldPassword}
-            helperText={error.oldPassword}
-          />
-          <input
-            placeholder="NEW PASSWORD"
-            // label="New Password"
-            // variant="standard"
-            // margin="normal"
-            type="password"
-            className="reset-password-input"
-            onChange={(e) => onChangePassword(e)}
-            error={!!error.newPassword}
-            helperText={error.newPassword}
-          />
-          <input
-            placeholder="CONFIRM PASSWORD"
-            // label="Confirm Password"
-            // variant="standard"
-            // margin="normal"
-            type="password"
-            className="reset-password-input"
-            onChange={(e) => onChangeConfirmPassword(e)}
-            error={!!error.confirmNewPassword}
-            helperText={error.confirmNewPassword}
-          />
-          <button className="reset-password-button" onClick={(e) => handleChangePassword(e)}>Done</button>
+          {successMessage && (
+            <div style={{ color: '#10b981', textAlign: 'center', fontWeight: 'bold', marginBottom: '10px' }}>
+              {successMessage}
+            </div>
+          )}
+          
+          <div>
+            <input
+              placeholder="OLD PASSWORD"
+              type="password"
+              className="reset-password-input"
+              value={oldPassword}
+              onChange={(e) => onChangeOldPassword(e)}
+            />
+            {error.oldPassword && <div className="error-message">{error.oldPassword}</div>}
+          </div>
+          
+          <div>
+            <input
+              placeholder="NEW PASSWORD"
+              type="password"
+              className="reset-password-input"
+              value={newPassword}
+              onChange={(e) => onChangePassword(e)}
+            />
+            {error.newPassword && <div className="error-message">{error.newPassword}</div>}
+          </div>
+          
+          <div>
+            <input
+              placeholder="CONFIRM PASSWORD"
+              type="password"
+              className="reset-password-input"
+              value={confirmNewPassword}
+              onChange={(e) => onChangeConfirmPassword(e)}
+            />
+            {error.confirmNewPassword && <div className="error-message">{error.confirmNewPassword}</div>}
+          </div>
+          
+          <button 
+            className="reset-password-button" 
+            onClick={(e) => handleChangePassword(e)}
+            disabled={loading}
+          >
+            {loading ? "Processing..." : "Change Password"}
+          </button>
         </div>
       </div>
     </div>
